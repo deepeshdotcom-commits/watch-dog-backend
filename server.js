@@ -48,3 +48,15 @@ app.get('/api/live-prices', async (req, res) => {
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log('Backend running on port ' + PORT));
+
+app.get('/api/history', (req, res) => {
+  const { symbol, range } = req.query;
+  // This is a placeholder. In your real server.js, 
+  // you would fetch historical prices from a DB or provider here.
+  const data = Array.from({ length: 20 }, (_, i) => ({
+    time: i + ":00",
+    price: 500 + Math.random() * 50
+  }));
+  res.json(data);
+});
+
